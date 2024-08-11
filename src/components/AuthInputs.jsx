@@ -50,34 +50,48 @@ export default function AuthInputs() {
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;
 
   return (
-    <div id="auth-inputs">
-      <ControlDiv>
+    <div
+      id="auth-inputs"
+      className="bg-gradient-to-b from-stone-700 to-stone-800 shadow-md mx-auto p-8 rounded w-full max-w-sm"
+    >
+      <div className="flex flex-col gap-2 mb-6">
         <p>
-          <LabelStyles invalid={emailNotValid}>Email</LabelStyles>
-          <ControlInput
+          <label
+            invalid={emailNotValid}
+            className="block mb-2 font-bold text-stone-300 text-xs uppercase tracking-wide"
+          >
+            Email
+          </label>
+          <input
             type="email"
             // style={{
             //   backgroundColor: emailNotValid ? "#fed2d2" : "#d1d5db" }}
-            className={emailNotValid ? "invalid" : undefined}
+            className="bg-stone-300 shadow px-3 py-2 border rounded w-full text-gray-700 leading-tight"
             onChange={(event) => handleInputChange("email", event.target.value)}
           />
         </p>
         <p>
-          <LabelStyles>Password</LabelStyles>
-          <ControlInput
+          <label className="block mb-2 font-bold text-stone-300 text-xs uppercase tracking-wide">
+            Password
+          </label>
+          <input
             type="password"
-            className={passwordNotValid ? "invalid" : undefined}
+            // className={passwordNotValid ? "invalid" : undefined}
+            className="bg-stone-300 shadow px-3 py-2 border rounded w-full text-gray-700 leading-tight"
             onChange={(event) =>
               handleInputChange("password", event.target.value)
             }
           />
         </p>
-      </ControlDiv>
-      <div className="actions">
-        <button type="button" className="text-button">
+      </div>
+      <div className="flex justify-end gap-4">
+        <button type="button" className="p-2 rounded font-semibold text-amber-400 hover:text-amber-500 uppercase">
           Create a new account
         </button>
-        <button className="button" onClick={handleLogin}>
+        <button
+          className="bg-amber-400 hover:bg-amber-500 px-4 py-2 rounded font-semibold text-stone-900 uppercase"
+          onClick={handleLogin}
+        >
           Sign In
         </button>
       </div>
